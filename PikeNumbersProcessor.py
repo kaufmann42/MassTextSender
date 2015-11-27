@@ -7,7 +7,7 @@ TextMessageFile = open('Text Message', 'r')
 
 num = 0
 FormattedList = []
-TextMessage = TextMessageFile.read().rstrip('\n')
+TextMessage = " " + TextMessageFile.read().rstrip('\n')
 
 #perform logic
 for line in PhoneNumbersFile:
@@ -16,11 +16,10 @@ for line in PhoneNumbersFile:
     num = num + 1
 
 for var in FormattedList:
-    # mystr = "osascript sendMessage.applescript " + str(var) + TextMessage
-    mystr = "osascript -e 'tell application \"Messages\" to send "+ TextMessage +" to \""+ str(var) +"\"\'"
+    mystr = "osascript sendMessage.applescript " + str(var) + TextMessage
     print mystr
     subprocess.call(mystr, shell=True)
 
 print str(num) + " numbers processed..."
 
-# osascript -e 'tell application "Messages" to send + TextMessage + to \"+ str(var) +\"'
+# osascript -e 'tell application "Messages" to send + TextMessage + to ""'
